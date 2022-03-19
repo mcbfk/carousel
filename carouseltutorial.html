@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .carouselslider{
+            display: none;
+        }
+        .carousel{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .active{
+            display: block;
+        }
+        .btn{
+            display: flex;
+            position: absolute;
+        }
+        .btn div{
+            margin: 0 150px 0 150px;
+            cursor: pointer;
+            font-size: 50px;
+        }
+        img{
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="carouselslider active" ><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdfgzyKfPiUS4UJ37X8sjK7YAHWobcqvRfGg&usqp=CAU" alt=""></div>
+        <div class="carouselslider"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdBosM04RN3oUUdV-jyeDoauSsb4BoCNWdKA&usqp=CAU" alt=""></div>
+        <div class="carouselslider"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV_28_Gdz1jAH7Ez0oejkQWWJxP0iTzzMkqQ&usqp=CAU" alt=""></div>
+    
+        <div class="btn">
+            <div class="prev"><</div>
+            <div class="next">></div>
+        </div>
+    </div>
+    <script>
+        var next = document.querySelector(".next")
+        var prev = document.querySelector(".prev")
+        var slides = document.querySelectorAll(".carouselslider")
+        var zero = 0
+
+        next.addEventListener("click", function(){
+            if( zero===slides.length - 1){
+                zero=0
+            }else{
+                zero++
+            }
+
+            slides.forEach(function(slide){
+                slide.classList.remove('active')
+            })
+            slides[zero].classList.add('active')
+        })
+
+        prev.addEventListener("click", function(){
+            if( zero === 0){
+                zero = slides.length-1
+            }else{
+                zero-- 
+            }
+
+            slides.forEach(function(slide){
+                slide.classList.remove('active')
+            })
+            slides[zero].classList.add('active')
+        })
+    </script>
+</body>
+</html>
